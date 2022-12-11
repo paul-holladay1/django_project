@@ -1,20 +1,49 @@
 {% extends "pizzas/base.html" %}
 
+{% block page_header %}
+    <h3><span style="color:white">{{pizza}}</span></h3>
+{% endblock page_header %}
+
 {% block content %}
-
-
-
-<p> Pizza: {{ pizza }} </p>
-
+<img class="card-img-top" src="..." alt="Card image cap">
 <ul>
     {% for t in toppings %}
 
-    <li> {{ t.topping_name }} </li>
+    <span style="color:white"><li><h3> {{ t.topping_name }} </h3></li></span>
 
     {% empty %}
-    <li> No toppings for this pizza has been added yet.</li>
+    <li><h3> No toppings for this pizza have been added yet.</h3></li>
     {% endfor %}
 
 </ul>
+
+<p>
+    <h3><a href="{% url 'pizzas:new_review' pizza.id %}">Add a new review</a></h3>
+</p>
+
+<ul>
+    {% for r in reviews %}
+    <div class="background">
+        <span style="color:white">
+            <h4 class="card-header">
+            {{ r.review|linebreaks }}
+            </h4>
+        </span>
+        <span style="color:white"><div class="card-body">
+        {{ r.date_added|date:'M d, Y H:i' }}
+    </span>
+        </div>
+    </div>
+
+
+    {% empty %}
+    <P> No reviews for this pizza have been added yet.</p>
+    {% endfor %}
+
+</ul>
+
+
+
+
 
 {% endblock content %}

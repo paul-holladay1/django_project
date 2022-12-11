@@ -6,7 +6,6 @@ class Pizza(models.Model):
     pizza_name = models.CharField(max_length=20)
     date_added = models.DateTimeField(auto_now_add=True)
 
-
     def __str__(self):
         return self.pizza_name
 
@@ -16,4 +15,15 @@ class Topping(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.topping_name   
+        return self.topping_name
+
+class Review(models.Model):
+    pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
+    review = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.review
+
+
+

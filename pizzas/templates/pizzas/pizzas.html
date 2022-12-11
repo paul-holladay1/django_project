@@ -3,15 +3,26 @@
 {% block content %}
 
 
-<p> Pizzas </p>
+<h3>
+    <p>
+        <span style="text-decoration: underline; color:white"> Pizzas </span>
+    </p>
+</h3>
 
 <ul>
     {% for pizza in all_pizzas %}
 
-    <li> 
-        <a href="{% url 'pizzas:pizza' pizza.id %}"> {{ pizza }} </a>
-    </li>
 
+
+
+
+      <div class="card" style="width: 18rem;">
+        <h5 class="card-title">{{pizza}}</h5>
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+          <a href="{% url 'pizzas:pizza' pizza.id %}"> View Pizza </a>
+        </div>
+      </div>
     {% empty %}
     <li> No pizzas have been added yet.</li>
     {% endfor %}
