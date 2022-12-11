@@ -2,15 +2,20 @@
 
 {% block content %}
 
-<p><a href="{% url 'pizzas:pizza' pizza.id %}">{{pizza}}</a></p>
+<h3><p><a href="{% url 'pizzas:pizza' pizza.id %}"><span style="color:white">{{pizza}}</span></a></p></h3>
 
+
+
+<span style="color:white">
 <p>Add new review:</p>
-
+</span>
+<span style="color:white">
 <form action="{% url 'pizzas:new_review' pizza.id %}" method="post">
+</span>
     {% csrf_token %}
 
     {{ form.as_p }}
-
+    
     <button name="submit">Add review</button>
 
 </form>
